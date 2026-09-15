@@ -4,8 +4,8 @@
   "framework": "vue",
   "rewrites": [
     { 
-      "source": "/api/(.*)", 
-      "destination": "https://your-app.up.railway.app/api/$1" 
+      "source": "/api/:path*", 
+      "destination": "https://pm-workbench-production-9356.up.railway.app/api/:path*" 
     },
     { 
       "source": "/((?!api/).*)", 

@@ -18,6 +18,14 @@ const newLink = ref({
 const icons = ['🔗', '📧', '📊', '📁', '💬', '🎯', '📝', '🔍', '🌐', '⚙️', '📅', '🤖', '📦', '🚀', '💡']
 const categories = ['general', 'work', 'dev', 'design', 'docs', 'social']
 
+function getHostname(url: string) {
+  try {
+    return new URL(url).hostname
+  } catch {
+    return url
+  }
+}
+
 function startEdit(link: QuickLink) {
   editingLink.value = link
   newLink.value = {
@@ -122,7 +130,7 @@ onMounted(fetchLinks)
 
         <div class="text-3xl mb-2">{{ link.icon }}</div>
         <div class="text-sm font-medium text-gray-900 truncate">{{ link.title }}</div>
-        <div class="text-xs text-gray-400 mt-1 truncate">{{ new URL(link.url).hostname }}</div>
+        <div class="text-xs text-gray-400 mt-1 truncate">{{ getHostname(link.url) }}</div>
       </a>
     </div>
 
